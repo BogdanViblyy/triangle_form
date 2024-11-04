@@ -39,19 +39,7 @@ namespace triangle_form
             this.Controls.Add(btn);
            
 
-            // Отображаем тип треугольника на форме
-            MessageBox.Show("Тип треугольника: " + triangle.TriangleType);
-
-            // Настройка PictureBox
-            PictureBox trianglePictureBox = new PictureBox();
-            trianglePictureBox.Image = Properties.Resources.Треугольник; // Используйте свой файл изображения
-            trianglePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            trianglePictureBox.BorderStyle = BorderStyle.Fixed3D;
-            trianglePictureBox.Size = new Size(200, 200);
-            trianglePictureBox.Location = new Point(50, 50);
-
-            // Добавление PictureBox на форму
-            this.Controls.Add(trianglePictureBox);
+            
         }
     }
 }
