@@ -20,51 +20,50 @@ namespace triangle_form
             c = C;
             height = Height;
         }
-        public Triangle()
+       
+        public string outputA()
         {
-        
-            a = 3;
-            b = 4;
-            c = 5;
-        }
-        public string outputA() 
-        {
-            return Convert.ToString(a); 
+            return Convert.ToString(a);
         }
 
-        public string outputB() 
+        public string outputB()
         {
-            return Convert.ToString(b); 
+            return Convert.ToString(b);
         }
 
-        public string outputC() 
+        public string outputC()
         {
-            return Convert.ToString(c); 
+            return Convert.ToString(c);
         }
         public string outputHeight()
         {
             return Convert.ToString(height);
         }
+        
 
-        public double Perimeter() 
+        public double Perimeter()
         {
             double p = 0;
-            p = a + b + c; 
-            return p; 
+            p = a + b + c;
+            return p;
         }
         public double SemiPerimeter()
         {
             double semiP = 0;
-            semiP=(a + b + c) / 2;
+            semiP = Perimeter() / 2;
             return semiP;
         }
 
-        public double Surface() 
+
+        public double Surface()
         {
             double s = 0;
-            double semiP = SemiPerimeter();
-            semiP = (a + b + c) / 2;
-            s = Math.Sqrt((semiP * (semiP - a) * (semiP - b) * (semiP - c)));
+            if (ExistTriangle)
+            {
+                double semiP = SemiPerimeter();
+                s = Math.Sqrt((semiP * (semiP - a) * (semiP - b) * (semiP - c)));
+                
+            }
             return s;
         }
 
@@ -95,12 +94,54 @@ namespace triangle_form
             set { c = value; }
         }
         public double GetSetHeight
-        { 
+        {
             get { return height; }
             set { height = value; }
         }
+        public bool ExistTriangle
+        {
+            get
+            {
+                if (a + b > c && a + c > b && b + c > a)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
        
 
-    }
+        public string TriangleType
+        {
+            get
+            {
+                if (ExistTriangle)
+                    if (a == b && b == c && a == c)
+                    {
+                        return "võrdkülgne";
+                    }
+                    else if (a == b || a == c || b == c)
+                    {
+                        return "võrdhaarne";
+                    }
+                    else
+                    {
+                        return "erikülgne";
+                    }
+                else
+                {
+                    return "tundmatu tüüp";
+                }
+            }
+               
+
+
+        }
+        
+
+    } 
     
 }
