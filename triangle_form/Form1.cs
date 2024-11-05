@@ -21,7 +21,7 @@ namespace triangle_form
             this.Width = 800;
             this.Text = "Kolmnurga vorm";
 
-            // Button
+            
             btn = new Button
             {
                 Text = "Käivita",
