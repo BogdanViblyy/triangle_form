@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace triangle_form
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         private Button btn;
-        private Button btn2; 
         private Triangle triangle;
         private PictureBox pb;
         private ListView listView;
@@ -15,7 +20,7 @@ namespace triangle_form
         private Label lblA, lblB, lblC;
         private RadioButton rbA, rbB, rbC;
 
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
 
@@ -23,7 +28,7 @@ namespace triangle_form
             this.Width = 800;
             this.Text = "Kolmnurga vorm";
 
-            
+
             btn = new Button
             {
                 Text = "Käivita",
@@ -37,21 +42,7 @@ namespace triangle_form
             };
             btn.Click += Run_button_Click;
 
-            
-            btn2 = new Button
-            {
-                Text = "Teine välimus",
-                Height = 50,
-                Width = 120,
-                Location = new Point(600, 120),
-                BackColor = Color.FromArgb(255, 255, 192),
-                Font = new Font("Arial", 14),
-                Cursor = Cursors.Hand,
-                FlatStyle = FlatStyle.Flat
-            };
-            btn2.Click += btnClose_Click; 
 
-            
             pb = new PictureBox
             {
                 Size = new Size(200, 200),
@@ -60,7 +51,7 @@ namespace triangle_form
                 Image = Image.FromFile("C:\\Users\\opilane\\source\\repos\\triangle_form\\triangle_form\\triangle.png")
             };
 
-            
+
             txtA = new TextBox { Location = new Point(25, 100), Width = 100 };
             lblA = new Label { Text = "A:", Location = new Point(25, 80) };
 
@@ -70,7 +61,7 @@ namespace triangle_form
             txtC = new TextBox { Location = new Point(275, 100), Width = 100 };
             lblC = new Label { Text = "C:", Location = new Point(275, 80) };
 
-            
+
             rbA = new RadioButton
             {
                 Text = "Külg",
@@ -88,7 +79,7 @@ namespace triangle_form
                 Location = new Point(275, 130)
             };
 
-            
+
             listView = new ListView
             {
                 Size = new Size(500, 200),
@@ -98,9 +89,8 @@ namespace triangle_form
             listView.Columns.Add("Omadus", 100);
             listView.Columns.Add("Väärtus", 150);
 
-           
+
             this.Controls.Add(btn);
-            this.Controls.Add(btn2); 
             this.Controls.Add(pb);
             this.Controls.Add(listView);
             this.Controls.Add(txtA);
@@ -114,7 +104,6 @@ namespace triangle_form
             this.Controls.Add(rbC);
         }
 
-       
         private void Run_button_Click(object sender, EventArgs e)
         {
             try
@@ -123,7 +112,7 @@ namespace triangle_form
                 double b = Convert.ToDouble(txtB.Text);
                 double c = Convert.ToDouble(txtC.Text);
 
-                
+
                 triangle = new Triangle(a, b, c, 0);
 
                 double selectedBase = 0;
@@ -142,7 +131,7 @@ namespace triangle_form
 
                 double height = triangle.GetHeight(selectedBase);
 
-                
+
                 listView.Items.Clear();
                 listView.Items.Add(new ListViewItem(new[] { "Külg a", triangle.outputA() }));
                 listView.Items.Add(new ListViewItem(new[] { "Külg b", triangle.outputB() }));
@@ -152,17 +141,12 @@ namespace triangle_form
                 listView.Items.Add(new ListViewItem(new[] { "Eksisteerib?", triangle.ExistTriangle ? "Eksisteerib" : "Ei eksisteeri" }));
                 listView.Items.Add(new ListViewItem(new[] { "Tüüp", triangle.TriangleType }));
                 listView.Items.Add(new ListViewItem(new[] { "Kõrgus", height.ToString("F2") }));
+
             }
             catch (FormatException)
             {
                 MessageBox.Show("Sisestage külgede a, b ja c jaoks kehtivad väärtused.", "Sisestusviga", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();  
         }
     }
 }
