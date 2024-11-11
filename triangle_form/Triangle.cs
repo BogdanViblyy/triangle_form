@@ -8,19 +8,31 @@ namespace triangle_form
 {
     internal class Triangle
     {
-        public double a;
-        public double b;
-        public double c;
+        public double a = 0;
+        public double b = 0;
+        public double c = 0;
+        public double ac = 0;
+        public double bc = 0;
+        public double cc = 0;
         public double height;
 
         public Triangle(double A, double B, double C, double Height)
         {
             a = A;
             b = B;
-            c = C;
+            c = C;          
+
             height = Height;
         }
-       
+        public void TriangleCorners(double Ac, double Bc, double Cc, double Height)
+        {
+            ac = Ac;
+            bc = Bc;
+            cc = Cc;
+
+            height = Height;
+        }
+
         public string outputA()
         {
             return Convert.ToString(a);
@@ -39,7 +51,22 @@ namespace triangle_form
         {
             return Convert.ToString(height);
         }
-        
+        public string outputAc()
+        {
+            return Convert.ToString(ac);
+        }
+
+        public string outputBc()
+        {
+            return Convert.ToString(bc);
+        }
+
+        public string outputCc()
+        {
+            return Convert.ToString(cc);
+        }
+     
+
 
         public double Perimeter()
         {
@@ -93,6 +120,22 @@ namespace triangle_form
             get { return c; }
             set { c = value; }
         }
+        public double GetSetAc
+        {
+            get
+            { return ac; }
+            set { ac = value; }
+        }
+        public double GetSetBc
+        {
+            get { return bc; }
+            set { bc = value; }
+        }
+        public double GetSetCc
+        {
+            get { return cc; }
+            set { cc = value; }
+        }
         public double GetSetHeight
         {
             get { return height; }
@@ -112,14 +155,29 @@ namespace triangle_form
                 }
             }
         }
-       
+        public bool ExistTriangleCorner
+        {
+            get
+            {
+                if (ac + bc + cc == 180)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
-        public string TriangleType
+
+
+        public string TriangleTypeBySides
         {
             get
             {
                 if (ExistTriangle)
-                    if (a == b && b == c && a == c)
+                    if (a == b && b == c)
                     {
                         return "võrdkülgne";
                     }
@@ -140,7 +198,37 @@ namespace triangle_form
 
 
         }
-        
+        public string TriangleTypeByCorners
+        {
+            get
+            {
+                if (ExistTriangleCorner)
+                    if (ac == bc && bc == cc)
+                    {
+                        return "võrdkülgne";
+                    } 
+                    else if (ac == bc || ac == cc || bc == cc)
+                    {
+                        return "võrdhaarne";
+                    }
+                    else if (ac == 90 ||  bc == 90 ||  cc == 90)
+                    {
+                        return "ristkülikujuline";
+                    }
+                    else
+                    {
+                        return "erikülgne";
+                    }
+                else
+                {
+                    return "tundmatu tüüp";
+                }
+            }
+
+
+
+        }
+
 
     } 
     

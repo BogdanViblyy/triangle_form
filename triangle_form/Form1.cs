@@ -45,13 +45,13 @@ namespace triangle_form
                 Width = 120,
                 Location = new Point(600, 120),
                 BackColor = Color.FromArgb(255, 255, 192),
-                Font = new Font("Arial", 14),
+                Font = new Font("Arial", 12),
                 Cursor = Cursors.Hand,
                 FlatStyle = FlatStyle.Flat
             };
-            btn2.Click += btnClose_Click; 
-
+            btn2.Click += btnClose_Click;
             
+
             pb = new PictureBox
             {
                 Size = new Size(200, 200),
@@ -77,7 +77,7 @@ namespace triangle_form
                 Location = new Point(25, 130),
                 Checked = true
             };
-            rbB = new RadioButton
+            rbB = new RadioButton 
             {
                 Text = "Külg",
                 Location = new Point(150, 130)
@@ -113,8 +113,14 @@ namespace triangle_form
             this.Controls.Add(rbB);
             this.Controls.Add(rbC);
         }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(); 
+            form2.Show();  
+            this.Hide();  
+        }
 
-       
+
         private void Run_button_Click(object sender, EventArgs e)
         {
             try
@@ -150,7 +156,7 @@ namespace triangle_form
                 listView.Items.Add(new ListViewItem(new[] { "Ümbermõõt", triangle.Perimeter().ToString() }));
                 listView.Items.Add(new ListViewItem(new[] { "Pindala", triangle.Surface().ToString() }));
                 listView.Items.Add(new ListViewItem(new[] { "Eksisteerib?", triangle.ExistTriangle ? "Eksisteerib" : "Ei eksisteeri" }));
-                listView.Items.Add(new ListViewItem(new[] { "Tüüp", triangle.TriangleType }));
+                listView.Items.Add(new ListViewItem(new[] { "Tüüp", triangle.TriangleTypeBySides }));
                 listView.Items.Add(new ListViewItem(new[] { "Kõrgus", height.ToString("F2") }));
             }
             catch (FormatException)
@@ -160,9 +166,6 @@ namespace triangle_form
         }
 
         
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();  
-        }
+   
     }
 }
