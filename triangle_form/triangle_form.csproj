@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="triangle.png" />
+    <Content Include="Triangles.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -83,6 +83,7 @@ namespace triangle_form
             form1.Show();
             this.Hide();
         }
+        
 
         private void BtnCalculate_Click(object sender, EventArgs e)
         {
@@ -95,7 +96,7 @@ namespace triangle_form
                
                 
 
-                Triangle triangle = new Triangle(Ac, Bc, Cc, 0 );
+                Triangle triangle = new Triangle(Ac, Bc, Cc, 0, true );
 
                 listView.Items.Clear();
                 listView.Items.Add(new ListViewItem(new[] { "Nurga A", Ac.ToString() }));
@@ -103,6 +104,7 @@ namespace triangle_form
                 listView.Items.Add(new ListViewItem(new[] { "Nurga C", Cc.ToString() }));
                 listView.Items.Add(new ListViewItem(new[] { "Eksisteerib?", triangle.ExistTriangleCorner ? "Eksisteerib" : "Ei eksisteeri" }));
                 listView.Items.Add(new ListViewItem(new[] { "Tüüp", triangle.TriangleTypeByCorners }));
+                triangle.SaveToXML();
             }
             catch (FormatException)
             {

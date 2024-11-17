@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace triangle_form
 {
@@ -15,6 +16,7 @@ namespace triangle_form
         public double bc = 0;
         public double cc = 0;
         public double height;
+        public string type;
 
         public Triangle(double A, double B, double C, double Height)
         {
@@ -24,7 +26,7 @@ namespace triangle_form
 
             height = Height;
         }
-        public void TriangleCorners(double Ac, double Bc, double Cc, double Height)
+        public Triangle(double Ac, double Bc, double Cc, double Height, bool byCorners)
         {
             ac = Ac;
             bc = Bc;
@@ -98,11 +100,12 @@ namespace triangle_form
         public double GetHeight(double baseLength)
         {
             double s = Surface();
-            double height = 0;
-            height = (2 * s) / baseLength;
-            return height;
+            double Height = 0;
+            Height = (2 * s) / baseLength;
+            height = Height;
+            return Height;
         }
-
+        
 
         public double GetSetA
         {
@@ -170,7 +173,23 @@ namespace triangle_form
             }
         }
 
-
+        public void SaveToXML()
+        {
+            string filePath = @"..\..\Triangles.xml";
+            XDocument doc = XDocument.Load(filePath);
+            XElement newTriangle = new XElement("triangle",
+                new XElement("sideA", a),
+                new XElement("sideB", b),
+                new XElement("sideC", c),
+                new XElement("angleA", ac),
+                new XElement("angleB", bc),
+                new XElement("angleC", cc),
+                new XElement("height", height),
+                new XElement("type", type)
+                );
+            doc.Root.Add(newTriangle);
+            doc.Save(filePath);
+        }
 
         public string TriangleTypeBySides
         {
@@ -179,18 +198,23 @@ namespace triangle_form
                 if (ExistTriangle)
                     if (a == b && b == c)
                     {
+                        type = "võrdkülgne";
                         return "võrdkülgne";
+                        
                     }
                     else if (a == b || a == c || b == c)
                     {
+                        type = "võrdhaarne";
                         return "võrdhaarne";
                     }
                     else
                     {
+                        type = "erikülgne";
                         return "erikülgne";
                     }
                 else
                 {
+                    type = "tundmatu tüüp";
                     return "tundmatu tüüp";
                 }
             }
@@ -205,22 +229,27 @@ namespace triangle_form
                 if (ExistTriangleCorner)
                     if (ac == bc && bc == cc)
                     {
+                        type = "võrdkülgne";
                         return "võrdkülgne";
                     } 
                     else if (ac == bc || ac == cc || bc == cc)
                     {
+                        type = "võrdhaarne";
                         return "võrdhaarne";
                     }
                     else if (ac == 90 ||  bc == 90 ||  cc == 90)
                     {
+                        type = "ristkülikujuline";
                         return "ristkülikujuline";
                     }
                     else
                     {
+                        type = "erikülgne";
                         return "erikülgne";
                     }
                 else
                 {
+                    type = "tundmatu tüüp";
                     return "tundmatu tüüp";
                 }
             }

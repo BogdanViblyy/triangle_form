@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<triangles>
+  <triangle>
+    <sideA></sideA>
+    <sideB></sideB>
+    <sideC></sideC>
+    <angleA></angleA>
+    <angleB></angleB>
+    <angleC></angleC>
+    <height></height>
+    <type></type>
+  </triangle>
+  <triangle>
+    <sideA>12</sideA>
+    <sideB>14</sideB>
+    <sideC>12</sideC>
+    <angleA>0</angleA>
+    <angleB>0</angleB>
+    <angleC>0</angleC>
+    <height>0</height>
+    <type>võrdhaarne</type>
+  </triangle>
+  <triangle>
+    <sideA>12</sideA>
+    <sideB>13</sideB>
+    <sideC>13</sideC>
+    <angleA>0</angleA>
+    <angleB>0</angleB>
+    <angleC>0</angleC>
+    <height>11.532562594670795</height>
+    <type>võrdhaarne</type>
+  </triangle>
+  <triangle>
+    <sideA>0</sideA>
+    <sideB>0</sideB>
+    <sideC>0</sideC>
+    <angleA>90</angleA>
+    <angleB>60</angleB>
+    <angleC>30</angleC>
+    <height>0</height>
+    <type>ristkülikujuline</type>
+  </triangle>
+</triangles>

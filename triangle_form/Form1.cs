@@ -57,7 +57,7 @@ namespace triangle_form
                 Size = new Size(200, 200),
                 Location = new Point(550, 165),
                 SizeMode = PictureBoxSizeMode.Zoom,
-                Image = Image.FromFile("C:\\Users\\opilane\\source\\repos\\triangle_form\\triangle_form\\triangle.png")
+                Image = Image.FromFile("C:\\Users\\Administrator\\Source\\Repos\\triangle_form\\triangle_form\\triangle.png")
             };
 
             
@@ -158,6 +158,7 @@ namespace triangle_form
                 listView.Items.Add(new ListViewItem(new[] { "Eksisteerib?", triangle.ExistTriangle ? "Eksisteerib" : "Ei eksisteeri" }));
                 listView.Items.Add(new ListViewItem(new[] { "Tüüp", triangle.TriangleTypeBySides }));
                 listView.Items.Add(new ListViewItem(new[] { "Kõrgus", height.ToString("F2") }));
+                triangle.SaveToXML();
             }
             catch (FormatException)
             {
