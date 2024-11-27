@@ -57,7 +57,7 @@ namespace triangle_form
                 Size = new Size(200, 200),
                 Location = new Point(550, 165),
                 SizeMode = PictureBoxSizeMode.Zoom,
-                Image = Image.FromFile("C:\\Users\\opilane\\Source\\Repos\\triangle_form\\triangle_form\\triangle.png")
+                Image = Image.FromFile("C:\\Users\\Administrator\\source\\repos\\triangle_form\\triangle_form\\triangle.png")
             };
 
             

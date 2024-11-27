@@ -231,17 +231,23 @@ namespace triangle_form
                     {
                         type = "võrdkülgne";
                         return "võrdkülgne";
-                    } 
+                    }
+                    else if (ac == 90 && bc == cc || bc == 90 && ac == cc || cc == 90 && ac == bc)
+                    {
+                        type = "võrdhaarne ristkülikujuline";
+                        return "võrdhaarne ristkülikujuline";
+                    }
+                    else if (ac == 90 || bc == 90 || cc == 90)
+                    {
+                        type = "ristkülikujuline";
+                        return "ristkülikujuline";
+                    }
                     else if (ac == bc || ac == cc || bc == cc)
                     {
                         type = "võrdhaarne";
                         return "võrdhaarne";
                     }
-                    else if (ac == 90 ||  bc == 90 ||  cc == 90)
-                    {
-                        type = "ristkülikujuline";
-                        return "ristkülikujuline";
-                    }
+                   
                     else
                     {
                         type = "erikülgne";
